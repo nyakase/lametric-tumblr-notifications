@@ -1,0 +1,24 @@
+{
+  "name": "lametric-tumblr-notifications",
+  "version": "1.0.0",
+  "description": "Bridge the Tumblr-to-Discord notifications to your LaMetric TIME",
+  "homepage": "https://github.com/nyakase/lametric-tumblr-notifications#readme",
+  "bugs": {
+    "url": "https://github.com/nyakase/lametric-tumblr-notifications/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyakase/lametric-tumblr-notifications.git"
+  },
+  "license": "MIT",
+  "author": "Hakase",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7"
+  }
+}
