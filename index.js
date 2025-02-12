@@ -44,8 +44,7 @@ client.on(Events.MessageCreate, async message => {
 client.once(Events.ClientReady, readiedUser => {
     console.log(`Hewwo everynyan, I'm ${readiedUser.user.tag}!`)
 })
-//client.login(process.env.DISCORD_BOT_TOKEN)
-sendToLametric("LIKE", "test")
+client.login(process.env.DISCORD_BOT_TOKEN)
 
 async function sendToLametric(TYPE, username) {
     if(!process.env[`${TYPE}_NOTIFICATION_ICON`]) return;
