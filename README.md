@@ -9,7 +9,6 @@ It's effectively a Node.js Discord bot that listens to Tumblr webhook messages a
 ## Not implemented
 * Notifications for when *you* post, be it original or a reblog
 * Text content for asks, reblogs, and replies
-* Notification sounds
 * Built-in support for multiple blogs (in the meantime, you can run multiple instances of this project)
 * Good documentation
 
@@ -44,6 +43,13 @@ You'll notice in the .env.example file that there are some icon variables. You c
 If you *don't* set an icon for a notification type, that notification type will not be bridged to your LaMetric TIME.
 
 ![The LaMetric icons I made for this project](img/lametric-icons.png)
+
+There are also sound variables. If you don't set a sound for a type, no sound will play. Refer to the [full list of notification IDs](https://lametric-documentation.readthedocs.io/en/latest/reference-docs/device-notifications.html) on the LaMetric Docs site, for simplicity you can't use custom sounds at the moment.
+
+## Ignoring and blocking users
+Some people have just too noisy or have interesting usernames. If you recognize your beloved mutual in this sentence, add them to the `MUTED_USERS` or `BLOCKED_USERS` variables, separated by comma without spaces.
+
+Muting them prevents notification sounds from being played, while blocking them prevents any notifications they triggered from being sent at all.
 
 ## Legal disclaimer
 This application doesn't actually use the Tumblr application programming interface but is still not endorsed or certified by Tumblr, Inc. All of the Tumblr logos and trademarks displayed on this application are the property of Tumblr, Inc.

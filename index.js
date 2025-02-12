@@ -16,26 +16,26 @@ const client = new Client({ intents: [
 client.on(Events.MessageCreate, async message => {
     if(process.env.DISCORD_WEBHOOK.split("/")[5] === message.webhookId && message.author.username === `Tumblr notification about ${process.env.TUMBLR_BLOG}`) {
         const event = message.embeds[0];
-        if(!event) return;
+        if(!event || process.env.BLOCKED_USERS?.split(",").includes(event.author.name)) return;
 
         switch(event.title) {
             case "New like received":
-                sendToLametric(process.env.LIKE_NOTIFICATION_ICON, event.author.name)
+                sendToLametric("LIKE", event.author.name)
                 break;
             case "New reblog received":
-                sendToLametric(process.env.REBLOG_NOTIFICATION_ICON, event.author.name)
+                sendToLametric("REBLOG", event.author.name)
                 break;
             case "New reply received":
-                sendToLametric(process.env.REPLY_NOTIFICATION_ICON, event.author.name)
+                sendToLametric("REPLY", event.author.name)
                 break;
             case "New mention received":
-                sendToLametric(process.env.MENTION_NOTIFICATION_ICON, event.author.name)
+                sendToLametric("MENTION", event.author.name)
                 break;
             case "New ask received":
-                sendToLametric(process.env.ASK_NOTIFICATION_ICON, event.author.name)
+                sendToLametric("ASK", event.author.name)
                 break;
             case "New follower":
-                sendToLametric(process.env.FOLLOW_NOTIFICATION_ICON, event.author.name)
+                sendToLametric("FOLLOW", event.author.name)
                 break;
         }
     }
@@ -44,20 +44,30 @@ client.on(Events.MessageCreate, async message => {
 client.once(Events.ClientReady, readiedUser => {
     console.log(`Hewwo everynyan, I'm ${readiedUser.user.tag}!`)
 })
-client.login(process.env.DISCORD_BOT_TOKEN)
+//client.login(process.env.DISCORD_BOT_TOKEN)
+sendToLametric("LIKE", "test")
 
-async function sendToLametric(icon, username) {
-    if(!icon) return;
+async function sendToLametric(TYPE, username) {
+    if(!process.env[`${TYPE}_NOTIFICATION_ICON`]) return;
+    const notificationOptions = {
+        "priority": "info",
+        "icon_type": "none",
+        "model": {"frames": [{icon: process.env[`${TYPE}_NOTIFICATION_ICON`], text: username}]}
+    }
+
+    if(process.env[`${TYPE}_NOTIFICATION_SOUND`] && !process.env.MUTED_USERS?.split(",").includes(username)) notificationOptions.model.sound = {
+        "category": "notifications",
+        "id": process.env[`${TYPE}_NOTIFICATION_SOUND`]
+    }
+
+    console.log(notificationOptions)
+
     return fetch(`http://${process.env.LAMETRIC_IP}:8080/api/v2/device/notifications`, {
         method: 'POST',
         headers: {
             "Authorization": `Basic ${Buffer.from(`dev:${process.env.LAMETRIC_KEY}`).toString('base64')}`,
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            "priority": "info",
-            "icon_type": "none",
-            "model": {"frames": [{icon, text: username}]}
-        })
+        body: JSON.stringify(notificationOptions)
     })
 }
