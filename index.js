@@ -59,8 +59,6 @@ async function sendToLametric(TYPE, username) {
         "id": process.env[`${TYPE}_NOTIFICATION_SOUND`]
     }
 
-    console.log(notificationOptions)
-
     return fetch(`http://${process.env.LAMETRIC_IP}:8080/api/v2/device/notifications`, {
         method: 'POST',
         headers: {
