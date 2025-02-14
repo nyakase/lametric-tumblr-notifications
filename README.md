@@ -47,7 +47,7 @@ If you *don't* set an icon for a notification type, that notification type will 
 There are also sound variables. If you don't set a sound for a type, no sound will play. Refer to the [full list of notification IDs](https://lametric-documentation.readthedocs.io/en/latest/reference-docs/device-notifications.html) on the LaMetric Docs site, for simplicity you can't use custom sounds at the moment.
 
 ## Ignoring and blocking users
-Some people have just too noisy or have interesting usernames. If you recognize your beloved mutual in this sentence, add them to the `MUTED_USERS` or `BLOCKED_USERS` variables, separated by comma without spaces.
+Some people are just too noisy or have interesting usernames. If you recognize your beloved mutual in this sentence, add them to the `MUTED_USERS` or `BLOCKED_USERS` variables, separated by comma without spaces.
 
 Muting them prevents notification sounds from being played, while blocking them prevents any notifications they triggered from being sent at all.
 
