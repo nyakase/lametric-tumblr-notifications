@@ -42,7 +42,7 @@ client.on(Events.MessageCreate, async message => {
     }
 })
 
-client.once(Events.ClientReady, readiedUser => {
+client.once(Events.ClientReady, async readiedUser => {
     console.log(`Hewwo everynyan, I'm ${readiedUser.user.tag}!`)
 })
 client.login(process.env.DISCORD_BOT_TOKEN)
@@ -51,7 +51,7 @@ async function sendToLametric(TYPE, username) {
     if(!process.env[`${TYPE}_NOTIFICATION_ICON`]) return;
     const notificationOptions = {
         "priority": "info",
-        "icon_type": "none",
+        "icon_type": process.env.PREFACE_SYMBOL || "none",
         "model": {"frames": [{icon: process.env[`${TYPE}_NOTIFICATION_ICON`], text: username}]}
     }
 
