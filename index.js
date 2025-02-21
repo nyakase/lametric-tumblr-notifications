@@ -26,6 +26,7 @@ client.on(Events.MessageCreate, async message => {
                 sendToLametric("REBLOG", event.author.name)
                 break;
             case "New reply received":
+            case "New mention received in a reply on this post":
                 sendToLametric("REPLY", event.author.name)
                 break;
             case "New mention received":
