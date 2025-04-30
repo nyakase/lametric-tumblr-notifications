@@ -41,9 +41,6 @@ Simply `npm install && node index.js`. As a quick test, if you enabled the like 
 
 ## Filtering
 
-### Disabling notification types
-If the icon variable for the notification type is blank or missing, the notification won't be sent.
-
 ### Disabling notifications from certain users
 You can add users to the `BLOCKED_USERS` environment variable, separated by comma without spaces.
 
