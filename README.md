@@ -12,8 +12,7 @@ It's effectively a Node.js Discord bot that listens to Tumblr webhook messages a
 * Built-in support for multiple blogs (in the meantime, you can run multiple instances of this project)
 * Good documentation
 
-## Setup and heads-up
-I apologize in advance for my flimsy instructions.
+## Setup
 
 You are going to need your LaMetric clock key, clock IP address, Discord bot token, a Discord channel, and maybe a Tumblr account. When I talk about "setting environment variables", I mean putting them in the .env file. Look at the .env.example file for an example of this.
 
