@@ -23,10 +23,11 @@ Decide which blog you're going to set this up for and set its username as the `T
 Go to the settings of the blog you set and scroll down to the "Discord Notifications" section. Paste in the Discord webhook URL from earlier and enable the notification types you'd like to bridge (if you want a type on the webhook but not on your LaMetric TIME, see "Setting icons and sounds".)
 
 ### Discord bot
-Create a Discord application on the [Discord Developer Portal](https://discord.com/developers/applications) and then go to the Bot tab and enable "Message Content Intent" under "Privileged Gateway Intents". Then go back to the "General Information" tab, copy the Application ID, and paste it into the client_id part of this link to invite it to your server: `https://discord.com/oauth2/authorize?client_id=YOURAPPIDHERE&permissions=0&integration_type=0&scope=bot`
+Create a Discord application on the [Discord Developer Portal](https://discord.com/developers/applications) and then go to the Bot tab and enable "Message Content Intent" under "Privileged Gateway Intents". 
 
-Once it's in the server, make sure it has permissions to read the channel.
+While on the bot tab, click "Reset Token" and set the token you get as the `DISCORD_BOT_TOKEN` environment variable. Then go to the "General Information" tab, copy the Application ID, and paste it into the client_id part of this link: `https://discord.com/oauth2/authorize?client_id=YOURAPPIDHERE&permissions=0&integration_type=0&scope=bot`
 
+Invite the bot to the server with the webhook by going to that link. If you made the webhook in a private channel, make sure to give the bot read access to it.
 ### Setting icons and sounds
 Last thing, let's customize a bit. Look at the `.env.example` file and you'll see some icon variables. These are IDs of icons on the [LaMetric Icons](https://developer.lametric.com/icons) site.
 
